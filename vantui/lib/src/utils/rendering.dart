@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
@@ -20,7 +19,7 @@ double? getChildOffsetInSliverList(
 ) {
   assert(sliverContext is SliverMultiBoxAdaptorElement);
 
-  AbstractNode? childRO = childContext.findRenderObject();
+  RenderObject? childRO = childContext.findRenderObject();
   while (childRO != null) {
     if (childRO is RenderIndexedSemantics) break;
     childRO = childRO.parent;
@@ -44,8 +43,8 @@ class AbstractNodeUtil {
 
   /// A > B > C > here, T = A, result = A
   /// A > B > C > here, T = D, result = null
-  static T? findParent<T extends AbstractNode>(AbstractNode? here) {
-    AbstractNode? parent = here?.parent;
+  static T? findParent<T extends RenderObject>(RenderObject? here) {
+    RenderObject? parent = here?.parent;
     while (parent != null) {
       if (parent is T) break;
       parent = parent.parent;
@@ -55,9 +54,9 @@ class AbstractNodeUtil {
 
   /// A > B > C > here, expect = A, result = B
   /// A > B > C > here, expect = C, result = ro
-  static AbstractNode? findParentBefore(
-      AbstractNode? here, AbstractNode? expect) {
-    AbstractNode? parent = here;
+  static RenderObject? findParentBefore(
+      RenderObject? here, RenderObject? expect) {
+    RenderObject? parent = here;
     while (parent != null) {
       if (parent.parent == expect) break;
       parent = parent.parent;

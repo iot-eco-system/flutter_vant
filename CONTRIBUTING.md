@@ -4,8 +4,8 @@ This Project contains VantUI (core), Icons, Docs. For managing them we use `pnpm
 
 ## Prerequisites
 
-- Flutter 3.3.10
-- Dart 2.18.6
+- Flutter 3.19.4
+- Dart 3.3.2
 - Pnpm (`npm -g i pnpm`)
 
 Use `fvm` for version managing is strongly recommended.

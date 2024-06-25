@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart'
         CupertinoLocalizations,
         cupertinoTextSelectionControls,
         cupertinoDesktopTextSelectionControls;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart'
     show
         DefaultMaterialLocalizations,
@@ -79,24 +80,26 @@ class TextSelectionControlsDecorator extends TextSelectionControls {
 
   @override
   Widget buildToolbar(
-      BuildContext context,
-      Rect globalEditableRegion,
-      double textLineHeight,
-      Offset position,
-      List<TextSelectionPoint> endpoints,
-      TextSelectionDelegate delegate,
-      ClipboardStatusNotifier? clipboardStatus,
-      Offset? lastSecondaryTapDownPosition) {
+    BuildContext context,
+    Rect globalEditableRegion,
+    double textLineHeight,
+    Offset selectionMidpoint,
+    List<TextSelectionPoint> endpoints,
+    TextSelectionDelegate delegate,
+    ValueListenable<ClipboardStatus>? clipboardStatus,
+    Offset? lastSecondaryTapDownPosition,
+  ) {
     return (decorateToolbar ?? (child) => child).call(Builder(
         builder: (context) => this.delegate.buildToolbar(
-            context,
-            globalEditableRegion,
-            textLineHeight,
-            position,
-            endpoints,
-            delegate,
-            clipboardStatus,
-            lastSecondaryTapDownPosition)));
+              context,
+              globalEditableRegion,
+              textLineHeight,
+              selectionMidpoint,
+              endpoints,
+              delegate,
+              clipboardStatus,
+              lastSecondaryTapDownPosition,
+            )));
   }
 
   @override

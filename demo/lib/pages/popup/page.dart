@@ -1,6 +1,3 @@
-import 'package:demo/widgets/child.dart';
-import 'package:demo/widgets/watch_model.dart';
-import 'package:demo/widgets/with_value.dart';
 import 'package:flutter/widgets.dart';
 import 'package:demo/doc/doc_title.dart';
 import 'package:flutter_vantui/flutter_vantui.dart';
@@ -182,10 +179,10 @@ class _PopupPage extends State<PopupPage> {
                   itemExtent: 40,
                   padding: EdgeInsets.zero,
                   children: List.generate(100, (i) {
-                    return Row(
+                    return const Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text("Flutter Vant UI"),
                         Icon(VanIcons.good_job_o),
                       ],

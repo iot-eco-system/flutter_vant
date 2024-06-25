@@ -51,28 +51,24 @@ class GlowlessScrollBehavior extends ScrollBehavior {
     bool? scrollbars,
     bool? overscroll,
     Set<PointerDeviceKind>? dragDevices,
+    MultitouchDragStrategy? multitouchDragStrategy,
     Set<LogicalKeyboardKey>? pointerAxisModifiers,
     ScrollPhysics? physics,
     TargetPlatform? platform,
-    AndroidOverscrollIndicator? androidOverscrollIndicator,
   }) {
     return GlowlessScrollBehavior(
       parent: parent?.copyWith(
         scrollbars: scrollbars,
         overscroll: overscroll,
+        multitouchDragStrategy: multitouchDragStrategy,
         pointerAxisModifiers: pointerAxisModifiers,
         physics: physics,
         platform: platform,
         dragDevices: dragDevices,
-        androidOverscrollIndicator: androidOverscrollIndicator,
       ),
       glowless: glowless,
     );
   }
-
-  @override
-  AndroidOverscrollIndicator get androidOverscrollIndicator =>
-      parent?.androidOverscrollIndicator ?? super.androidOverscrollIndicator;
 
   @override
   Set<PointerDeviceKind> get dragDevices =>

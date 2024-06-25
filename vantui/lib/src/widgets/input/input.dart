@@ -1,6 +1,7 @@
 // ignore_for_file: annotate_overrides
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tailstyle/tailstyle.dart';
@@ -328,7 +329,7 @@ class InputState extends State<Input>
       if (!showHint) return nil;
       return Text(
         this.hint,
-        style: textStyle?.copyWith(
+        style: textStyle.copyWith(
           color: textStyle.color?.withAlpha(0x40),
           overflow: TextOverflow.ellipsis,
         ),
