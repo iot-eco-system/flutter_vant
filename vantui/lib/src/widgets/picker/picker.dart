@@ -17,6 +17,8 @@ class Picker extends PickerPanel {
   final Function(List? value)? onConfirm;
   // @DocsProp("onCancel", "Function(List)", "取消回调")
   final Function(List? value)? onCancel;
+  // @DocsProp("hideToolbar", "bool", "是否隐藏toolbar")
+  final bool hideToolbar;
 
   Picker({
     this.title,
@@ -24,6 +26,7 @@ class Picker extends PickerPanel {
     this.cancelText,
     this.onConfirm,
     this.onCancel,
+    this.hideToolbar = false,
     required super.columns,
     super.values,
     super.onChange,
@@ -42,13 +45,15 @@ class PickerState extends State<Picker> {
   Widget build(BuildContext context) {
     return WithValue(widget.values, (model) {
       return Column(mainAxisSize: MainAxisSize.min, children: [
-        PickerToolBar(
-          title: widget.title,
-          cancelText: widget.cancelText,
-          confirmText: widget.confirmText,
-          onCancel: () => widget.onCancel?.call(model.value),
-          onConfirm: () => widget.onConfirm?.call(model.value),
-        ),
+        widget.hideToolbar
+            ? const SizedBox()
+            : PickerToolBar(
+                title: widget.title,
+                cancelText: widget.cancelText,
+                confirmText: widget.confirmText,
+                onCancel: () => widget.onCancel?.call(model.value),
+                onConfirm: () => widget.onConfirm?.call(model.value),
+              ),
         PickerPanel(
           values: model.value,
           onChange: (values) {
